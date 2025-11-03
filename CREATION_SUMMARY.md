@@ -100,13 +100,53 @@ results = orchestrator.execute(items)
 - **Lines of Code**: ~3000+ lines
 - **Dependencies**: Minimal, well-documented in requirements.txt
 
+## Testing
+
+The toolkit includes comprehensive testing with two complementary approaches:
+
+### 1. Pytest Unit Tests (`tests/` directory)
+
+Fast, isolated unit tests that mock external dependencies:
+- ✅ `test_browser_automation.py` - Browser controller/session (mocked WebDriver)
+- ✅ `test_handler_framework.py` - Handler base class and scraping
+- ✅ `test_pipeline_framework.py` - Pipeline orchestrator and stages
+- ✅ `test_file_downloads.py` - File downloader with strategies
+
+**Run tests:**
+```bash
+pytest                    # Run all tests
+pytest -m "not e2e"      # Skip end-to-end tests
+```
+
+**Features:**
+- Fast execution (no real browsers or network calls)
+- Isolated unit tests with mocked dependencies
+- Perfect for CI/CD and automated testing
+
+### 2. Integration Test Notebook (`test.ipynb`)
+
+Interactive integration tests with real components:
+- ✅ Browser Management - Real browser automation, sessions, cookies
+- ✅ Handler Framework - Real scraping workflows
+- ✅ Pipeline Framework - Full pipeline execution
+- ✅ Download Management - Real file downloads
+- ✅ Logging System - Complete logging workflow
+- ✅ Database & ORM - Real SQLite operations
+
+**Usage:**
+1. Open `toolkit/test.ipynb` in Jupyter (notebook is in toolkit folder)
+2. Run cells sequentially to test each module
+3. Inspect results interactively
+4. Great for learning and manual verification
+5. Notebook automatically detects project root for imports
+
 ## Next Steps (Future Enhancements)
 
 1. Configuration System: YAML/JSON config file support
 2. Utilities Module: Common utilities (hashing, parsing, etc.)
 3. Example Pipelines: Reference implementations
 4. Documentation: API reference and tutorials
-5. Tests: Unit tests for each module
+5. **Tests**: ✅ Both unit tests (pytest) and integration tests (notebook) are in place
 
 ## Notes
 
